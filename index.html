@@ -51,37 +51,31 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column has-text-centered">
-            <h1 class="title is-1 publication-title">DriveSplat: Decoupled Driving Scene Reconstruction with Geometry-enhanced Partitioned Neural Gaussians</h1>
+            <h1 class="title is-1 publication-title">DriveSplat: Unified Neural Gaussian Reconstruction for Dynamic Driving Scenes</h1>
             <div class="is-size-5 publication-authors">
               <!-- Paper authors -->
               <span class="author-block">
-                <a href="https://hjx-exoskeleton.github.io/" target="_blank">Cong Wang</a><sup>1,2</sup>,</span>
-                <span class="author-block">
-                  <a>Xianda Guo</a><sup>3</sup>,
-                </span>
-                  <span class="author-block">
-                    <a>Wenbo Xu</a><sup>4</sup>,
-                  </span>
+                <a>Cong Wang</a><sup>1,2</sup>,</span>
                     <span class="author-block">
-                      <a>Wei Tian</a><sup>5</sup>,
+                      <a>Ruiqi Song</a><sup>1,3</sup>
+                    </span>
+                    <span class="author-block">
+                      <a>Wei Tian</a><sup>4</sup>,
                     </span>
                       <span class="author-block">
-                        <a>Ruiqi Song</a><sup>1,4</sup>
+                        <a>Chenming Zhang</a><sup>5</sup>,
                       </span>
                       <span class="author-block">
-                        <a>Chenming Zhang</a><sup>6</sup>,
+                        <a>Lingxi Li</a><sup>6</sup>,
                       </span>
                       <span class="author-block">
-                        <a>Lingxi Li</a><sup>7</sup>,
-                      </span>
-                      <span class="author-block">
-                        <a>Long Chen</a><sup>1,4,6</sup><sup>*</sup>
+                        <a>Long Chen</a><sup>1,3</sup><sup>*</sup>
                       </span>
                   </div>
 
                   <div class="is-size-5 publication-authors">
-                    <span class="author-block"><sup>1</sup>the State Key Laboratory of Multimodal Artificial Intelligence Systems, Institute of Automation, Chinese Academy of Sciences.<br><sup>2</sup>School of Artificial Intelligence, University of Chinese Academy of Sciences.</span><br><sup>3</sup>School of Computer Science, Wuhan University.</span><br><sup>4</sup>Waytous.</span><br><sup>5</sup>
-                    School of Automotive Studies, Tongji University.</span><br><sup>6</sup>Institute of Artificial Intelligence and Robotics, Xi'an Jiaotong University.</span><br><sup>7</sup>Purdue University.</span>
+                    <span class="author-block"><sup>1</sup>the State Key Laboratory of Multimodal Artificial Intelligence Systems, Institute of Automation, Chinese Academy of Sciences.<br></span><br><sup>2</sup>Zhongguancun Academy.</span><br><sup>3</sup>Waytous.</span><br><sup>4</sup>
+                    School of Automotive Studies, Tongji University.</span><br><sup>5</sup>Institute of Artificial Intelligence and Robotics, Xi'an Jiaotong University.</span><br><sup>6</sup>Purdue University.</span>
                     <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding Author</small></span>
                   </div>
 
@@ -161,7 +155,7 @@
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
           <p>
-            In the realm of driving scenarios, the presence of rapidly moving vehicles, pedestrians in motion, and large-scale static backgrounds poses significant challenges for 3D scene reconstruction. Recent methods based on 3D Gaussian Splatting address the motion blur problem by decoupling dynamic and static components within the scene. However, these decoupling strategies overlook background optimization with adequate geometry relationships and rely solely on fitting each training view by adding Gaussians. Therefore, these models exhibit limited robustness in rendering novel views and lack an accurate geometric representation. To address the above issues, we introduce DriveSplat, a high-quality reconstruction method for driving scenarios based on neural Gaussian representations with dynamic-static decoupling. To better accommodate the predominantly linear motion patterns of driving viewpoints, a region-wise voxel initialization scheme is employed, which partitions the scene into near, middle, and far regions to enhance close-range detail representation. Deformable neural Gaussians are introduced to model non-rigid dynamic actors such as pedestrians and cyclists, whose parameters are temporally adjusted by a learnable deformation network. The entire framework is further supervised by depth and normal priors from pre-trained models, improving the accuracy of geometric structures. Our method has been rigorously evaluated on the Waymo and KITTI datasets, demonstrating state-of-the-art performance in novel-view synthesis for driving scenarios.
+            Reconstructing large-scale dynamic driving scenes remains challenging due to the coexistence of static environments with extreme depth variation and diverse dynamic actors exhibiting complex motions. Existing Gaussian Splatting based methods have primarily focused on limited-scale or object-centric settings, and their applicability to large-scale dynamic driving scenes remains underexplored, particularly in the presence of extreme scale variation and non-rigid motions. In this work, we propose DriveSplat, a unified neural Gaussian framework for reconstructing dynamic driving scenes within a unified Gaussian-based representation. For static backgrounds, we introduce a scene-aware learnable level-of-detail (LOD) modeling strategy that explicitly accounts for near, intermediate, and far depth ranges in driving environments, enabling adaptive multi-scale Gaussian allocation. For dynamic actors, we use an object-centric formulation with neural Gaussian primitives, modeling motion through a global rigid transformation and handling non-rigid dynamics via a two-stage deformation that first adjusts anchors and subsequently updates the Gaussians. To further regularize the optimization, we incorporate dense depth and surface normal priors from pre-trained models as auxiliary supervision. Extensive experiments on the Waymo and KITTI benchmarks demonstrate that DriveSplat achieves state-of-the-art performance in novel-view synthesis while producing temporally stable and geometrically consistent reconstructions of dynamic driving scenes.
           </p>
         </div>
       </div>
@@ -207,6 +201,12 @@
             <video poster="" id="video2" autoplay controls muted loop height="100%">
               <!-- Your video here -->
               <source src="static/videos/621.mp4"
+              type="video/mp4">
+            </video>
+
+            <video poster="" id="high1" autoplay controls muted loop height="100%">
+              <!-- Your video here -->
+              <source src="static/videos/016.mp4"
               type="video/mp4">
             </video>
 
@@ -283,6 +283,52 @@
 <!-- End youtube video -->
 
 
+
+
+<!-- Youtube video -->
+<section class="hero is-small is-light">
+  <div class="hero-body">
+    <div class="container">
+      <!-- Paper video. -->
+      <h2 class="title is-3">Comparison with Baselines</h2>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          
+<!--          <div class="publication-video">-->
+<!--            &lt;!&ndash; Youtube embed code here &ndash;&gt;-->
+<!--            <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+<!--          </div>-->
+
+            <video poster="" id="vieo1" autoplay controls muted loop height="100%">
+              <!-- Your video here -->
+              <source src="static/videos/com_026.mp4"
+              type="video/mp4">
+            </video>
+
+            <video poster="" id="video2" autoplay controls muted loop height="100%">
+              <!-- Your video here -->
+              <source src="static/videos/com_105.mp4"
+              type="video/mp4">
+            </video>
+
+            <video poster="" id="high1" autoplay controls muted loop height="100%">
+              <!-- Your video here -->
+              <source src="static/videos/com_108.mp4"
+              type="video/mp4">
+            </video>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End youtube video -->
+
+
+
+
+
+
 <!-- Video carousel -->
 <section class="hero is-small">
   <div class="hero-body">
@@ -330,6 +376,40 @@
             </h2>
         </div>
       </div>
+
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-video1">
+          <video poster="" id="video1" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/049.mp4"
+            type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            049
+          </h2>
+        </div>
+        <div class="item item-video2">
+          <video poster="" id="video2" autoplay controls muted loop height="100%">
+            <!-- Your video file here -->
+            <source src="static/videos/084.mp4"
+            type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            084
+          </h2>
+        </div>
+        <div class="item item-video3">
+          <video poster="" id="video3" autoplay controls muted loop height="100%">\
+            <!-- Your video file here -->
+            <source src="static/videos/323.mp4"
+            type="video/mp4">
+          </video>
+          <h2 class="subtitle has-text-centered">
+            323
+          </h2>
+         </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -342,8 +422,7 @@
 
 
 
-<!--BibTex citation -->
-  <section class="section" id="BibTeX">
+  <!-- <section class="section" id="BibTeX">
     <div class="container is-max-desktop content">
       <h2 class="title">BibTeX</h2>
       <pre><code>
@@ -355,11 +434,10 @@
       }
       </code></pre>
     </div>
-</section>
-<!--End BibTex citation -->
+</section> -->
 
 
-  <footer class="footer">
+  <!-- <footer class="footer">
   <div class="container">
     <div class="columns is-centered">
       <div class="column is-8">
@@ -375,7 +453,7 @@
       </div>
     </div>
   </div>
-</footer>
+</footer> -->
 
 <!-- Statcounter tracking code -->
   
